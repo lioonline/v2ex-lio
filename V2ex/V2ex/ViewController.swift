@@ -11,8 +11,8 @@ import Alamofire
 import SwiftyJSON
 import Kingfisher
 
-let VIEW_W:CGFloat  =  UIScreen.mainScreen().bounds.size.width
-let VIEW_H:CGFloat  =  UIScreen.mainScreen().bounds.size.height
+let Screen_W:CGFloat  =  UIScreen.mainScreen().bounds.size.width
+let Screen_H:CGFloat  =  UIScreen.mainScreen().bounds.size.height
 
 
 class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate{
@@ -28,19 +28,21 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
         // Do any additional setup after loading the view, typically from a nib.
         
         
-        
-     
-        
+
+        self.navigationController?.navigationBarHidden  = true
+        self.view.backgroundColor = UIColor.whiteColor()
         
 //       table
-        tableView  = UITableView(frame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height), style: UITableViewStyle.Plain)
+        tableView  = UITableView(frame:CGRectMake(0, 20, Screen_W, Screen_H-20), style: UITableViewStyle.Plain)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerClass(NewFeedCell.self, forCellReuseIdentifier: cellID)
         view.addSubview(tableView)
         tableView.backgroundColor = UIColor.whiteColor()
-        
         self.getNewFeed()
+//        discover
+//        let disCoverButton = UIButton()
+        
     }
     
     
@@ -54,8 +56,6 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
                 
                 self.computeHeight(self.json)
                 self.tableView.reloadData()
-
-                
         }
         
     }
@@ -64,19 +64,18 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
     func computeHeight(json:JSON)->Void{
         
        
-        for var i = 0;i < self.json.count;i++ {
+        for i in 0 ..< self.json.count {
             let title:String = self.json[i]["title"].string!
-            let titleHeight = title.heightWithConstrainedWidth(VIEW_W - 20, font: UIFont.systemFontOfSize(15))
+            let titleHeight = title.heightWithConstrainedWidth(Screen_W - 20, font: UIFont.systemFontOfSize(15))
             self.titleSizeArray.addObject(titleHeight)
             let content = json[i]["content"].string!
-            let contentHeight = content.heightWithConstrainedMax120Width(VIEW_W - 20, font: UIFont.systemFontOfSize(12))
+            let contentHeight = content.heightWithConstrainedMax120Width(Screen_W - 20, font: UIFont.systemFontOfSize(12))
             self.contentSizeArray.addObject(contentHeight)
    
             
         }
         
     }
-    
     
     
     
@@ -163,7 +162,7 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
 
 extension String {
     func heightWithConstrainedWidth(width: CGFloat, font: UIFont) -> CGFloat {
-        let constraintRect = CGSize(width: VIEW_W - 20 , height: 40)
+        let constraintRect = CGSize(width: Screen_W - 20 , height: 40)
         
         let boundingBox = self.boundingRectWithSize(constraintRect, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
         
@@ -172,7 +171,7 @@ extension String {
     
     
     func heightWithConstrainedMax120Width(width: CGFloat, font: UIFont) -> CGFloat {
-        let constraintRect = CGSize(width: VIEW_W - 20 , height: 120)
+        let constraintRect = CGSize(width: Screen_W - 20 , height: 120)
         
         let boundingBox = self.boundingRectWithSize(constraintRect, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
         

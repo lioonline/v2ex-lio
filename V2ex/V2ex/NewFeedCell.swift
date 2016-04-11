@@ -35,7 +35,7 @@ class NewFeedCell: UITableViewCell {
     
     func rendering() -> Void{
        self.contentView.addSubview(vAvatar)
-        vAvatar.layer.cornerRadius = 15
+        vAvatar.layer.cornerRadius = 4
         vAvatar.clipsToBounds = true
         vAvatar.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(self.contentView).offset(10)
@@ -44,7 +44,7 @@ class NewFeedCell: UITableViewCell {
         }
         
         
-        
+//
         self.contentView.addSubview(vName)
         vName.text = "name(T)"
         vName.textColor = RGBA(140, g: 140, b: 140, a: 1)
@@ -53,7 +53,7 @@ class NewFeedCell: UITableViewCell {
             make.left.equalTo(vAvatar.snp_right).offset(10)
             make.top.equalTo(vAvatar.snp_top)
         }
-        
+//
         self.contentView.addSubview(vTime)
         vTime.textColor = RGBA(175 , g: 175, b: 175, a: 1)
         vTime.text = "2015-09-23(T)"
@@ -62,16 +62,16 @@ class NewFeedCell: UITableViewCell {
             make.left.equalTo(vName.snp_left)
             make.top.equalTo(vName.snp_bottom).offset(5)
         }
-        
-        
+//
+//
         self.contentView.addSubview(vTitle)
-        vTitle.text = "V@EX"
+        vTitle.text = "V2EX"
         vTitle.font = UIFont.systemFontOfSize(15)
         vTitle.textColor = RGBA(1, g: 117, b: 97, a: 1)
         vTitle.numberOfLines = 2
         vTitle.lineBreakMode = NSLineBreakMode.ByTruncatingTail
         vTitle.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(vAvatar.snp_left)
+            make.left.equalTo(vTime.snp_left)
             make.top.equalTo(vAvatar.snp_bottom).offset(10)
             make.right.equalTo(self.contentView.snp_right).offset(-10)
         }
@@ -80,18 +80,18 @@ class NewFeedCell: UITableViewCell {
         
         
         
-        
-        self.contentView.addSubview(vContent)
-        vContent.font = UIFont.systemFontOfSize(12)
-        vContent.textColor = RGBA(110, g: 110, b: 110, a: 1)
-        vContent.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(vTitle.snp_left)
-            make.top.equalTo(vTitle.snp_bottom).offset(5)
-            make.right.equalTo(vTitle.snp_right)
-            make.bottom.equalTo(self.contentView.snp_bottom)
-        }
-        vContent.lineBreakMode =  NSLineBreakMode.ByTruncatingTail
-        vContent.numberOfLines = 0
+//        
+//        self.contentView.addSubview(vContent)
+//        vContent.font = UIFont.systemFontOfSize(12)
+//        vContent.textColor = RGBA(110, g: 110, b: 110, a: 1)
+//        vContent.snp_makeConstraints { (make) -> Void in
+//            make.left.equalTo(vTitle.snp_left)
+//            make.top.equalTo(vTitle.snp_bottom).offset(5)
+//            make.right.equalTo(vTitle.snp_right)
+//            make.bottom.equalTo(self.contentView.snp_bottom)
+//        }
+//        vContent.lineBreakMode =  NSLineBreakMode.ByTruncatingTail
+//        vContent.numberOfLines = 0
         
         
         

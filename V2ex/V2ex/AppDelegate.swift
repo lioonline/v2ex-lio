@@ -19,12 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        let home:ViewController = ViewController();
-        let nav:UINavigationController = UINavigationController(rootViewController: home)
-        window?.rootViewController = nav
         window?.makeKeyAndVisible()
+        let home = HomeViewController()
+        let nav  = UINavigationController(rootViewController: home)
+        self.window?.rootViewController = nav
         
-        UINavigationBar.appearance().barStyle = UIBarStyle.Black
+        
+        
         
         
         return true

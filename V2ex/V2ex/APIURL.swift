@@ -17,3 +17,5 @@ let V2_POINT:String = "https://www.v2ex.com/api/nodes/show.json"
 let V2_ :String = "https://www.v2ex.com/api/members/show.json"
 //base 
 let V2_BASE :String = "http:"
+//主题信息
+let V2_CONTENT:String = "https://www.v2ex.com/api/topics/show.json"

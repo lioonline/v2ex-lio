@@ -1,19 +1,25 @@
 PODS:
   - Alamofire (2.0.2)
   - Kingfisher (1.6.0)
+  - Reveal-iOS-SDK (1.6.2)
+  - SlideMenuControllerSwift (2.1.1)
   - SnapKit (0.15.0)
   - SwiftyJSON (2.3.0)
 
 DEPENDENCIES:
   - Alamofire (~> 2.0)
   - Kingfisher (~> 1.6.0)
+  - Reveal-iOS-SDK
+  - SlideMenuControllerSwift
   - SnapKit (~> 0.15.0)
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
   Kingfisher: 3308d487e5c2a0fba9c1054fc3b8c45923e03c40
+  Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
+  SlideMenuControllerSwift: 82ada9b04e03538c84d034cf1c09e5849c0113f7
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
   SwiftyJSON: 8d6b61a70277ef2a5d710d372e06e7e2d87fb9e4
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0

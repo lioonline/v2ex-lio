@@ -6,3 +6,6 @@ pod 'SnapKit', '~> 0.15.0'
 pod 'Alamofire', '~> 2.0'
 pod 'SwiftyJSON'
 pod 'Kingfisher', '~> 1.6.0'
+pod 'SlideMenuControllerSwift'
+pod 'Reveal-iOS-SDK', :configurations => ['Debug']
+

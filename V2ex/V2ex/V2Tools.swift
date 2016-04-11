@@ -7,8 +7,6 @@
 //
 
 import UIKit
-  
-
 
 class V2Tools: NSObject {
 
