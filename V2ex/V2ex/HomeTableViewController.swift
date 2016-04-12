@@ -75,15 +75,12 @@ class HomeTableViewController: UITableViewController,UIViewControllerTransitioni
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         let urlString = V2_BASE + json[indexPath.row]["member"]["avatar_normal"].string!
         cell.vAvatar.kf_setImageWithURL(NSURL(string:urlString)!)
-//        cell.contentView.backgroundColor = UIColor.whiteColor()
         cell.vName.text = json[indexPath.row]["member"]["username"].string
         cell.vTitle.text = json[indexPath.row]["title"].string
         cell.vContent.text = json[indexPath.row]["content"].string!
-//
         let timestring = json[indexPath.section]["created"].intValue
         let t = timeStampToString("\(timestring)")
         cell.vTime.text  = t
-//        print("time \(timestring)")
 
         return cell
     }

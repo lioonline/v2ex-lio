@@ -39,7 +39,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         moreButton.clipsToBounds = true
         moreButton.frame = CGRectMake(30, Screen_H - 90 , 60, 60)
         
-        self.title = "V2EX"
+        self.title = "V2EX 最热"
         
 
     }
@@ -62,7 +62,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         cell.vName.text = json[indexPath.row]["member"]["username"].string
         cell.vTitle.text = json[indexPath.row]["title"].string
         cell.vContent.text = json[indexPath.row]["content"].string!
-        let timestring = json[indexPath.section]["created"].intValue
+        let timestring = json[indexPath.row]["created"].intValue
         let t = timeStampToString("\(timestring)")
         cell.vTime.text  = t
         
@@ -122,7 +122,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     //    请求最新数据
     func getNewFeed() ->Void{
         
-        Alamofire.request(.GET, V2_NEW, parameters:nil)
+        Alamofire.request(.GET, V2_HOT, parameters:nil)
             .responseJSON { (request, response, result) -> Void in
                 self.json = JSON(result.value!)
                 print(self.json)

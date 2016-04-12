@@ -47,7 +47,7 @@ class NewFeedCell: UITableViewCell {
 //
         self.contentView.addSubview(vName)
         vName.text = "name(T)"
-        vName.textColor = RGBA(140, g: 140, b: 140, a: 1)
+        vName.textColor = RGBA(119, g: 128, b: 135, a: 1)
         vName.font = UIFont.systemFontOfSize(12)
         vName.snp_makeConstraints { (make) -> Void in
             make.left.equalTo(vAvatar.snp_right).offset(10)
@@ -55,7 +55,7 @@ class NewFeedCell: UITableViewCell {
         }
 //
         self.contentView.addSubview(vTime)
-        vTime.textColor = RGBA(175 , g: 175, b: 175, a: 1)
+        vTime.textColor = RGBA(204 , g: 204, b: 204, a: 1)
         vTime.text = "2015-09-23(T)"
         vTime.font = UIFont.systemFontOfSize(10)
         vTime .snp_updateConstraints { (make) -> Void in
@@ -67,7 +67,7 @@ class NewFeedCell: UITableViewCell {
         self.contentView.addSubview(vTitle)
         vTitle.text = "V2EX"
         vTitle.font = UIFont.systemFontOfSize(15)
-        vTitle.textColor = RGBA(1, g: 117, b: 97, a: 1)
+        vTitle.textColor = RGBA(119, g: 128, b: 135, a: 1)
         vTitle.numberOfLines = 2
         vTitle.lineBreakMode = NSLineBreakMode.ByTruncatingTail
         vTitle.snp_makeConstraints { (make) -> Void in

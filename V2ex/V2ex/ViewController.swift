@@ -160,29 +160,6 @@ class ViewController: UIViewController ,UITableViewDataSource,UITableViewDelegat
 }
 
 
-extension String {
-    func heightWithConstrainedWidth(width: CGFloat, font: UIFont) -> CGFloat {
-        let constraintRect = CGSize(width: Screen_W - 20 , height: 40)
-        
-        let boundingBox = self.boundingRectWithSize(constraintRect, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
-        
-        return boundingBox.height
-    }
-    
-    
-    func heightWithConstrainedMax120Width(width: CGFloat, font: UIFont) -> CGFloat {
-        let constraintRect = CGSize(width: Screen_W - 20 , height: 120)
-        
-        let boundingBox = self.boundingRectWithSize(constraintRect, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
-        
-        print("height \(boundingBox.height)")
-      
-        return boundingBox.height + 5
-    }
-    
-    
-    
-}
 
 
 
