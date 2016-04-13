@@ -10,4 +10,15 @@ import UIKit
 
 class MemberModel: NSObject {
 
+    var username:String      = ""
+    var id                   = 0
+    var tagline:String       = ""
+    var avatar_mini:String   = ""
+    var avatar_normal:String = ""
+    var  avatar_large:String = ""
+
+    
+
+    
+
 }

@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import TTReflect
 
 
 class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
@@ -16,7 +17,8 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
     var contentID = 0;
     private     var jsonDate:JSON = nil
     private     var replyDate:JSON = nil
-
+    private     var feedReplyModelArray:NSMutableArray  = NSMutableArray()
+    private     var  feedReplyCellHeight = NSMutableArray()
     private    var  feedTableView = UITableView()
     private     var  contenCellHeight:CGFloat = 0.0
     private var  htmlString = ""
@@ -38,35 +40,66 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
         
         feedTableView.registerClass(FeedContentCell.self, forCellReuseIdentifier: "feedContent")
         feedTableView.registerClass(FeedDetatilHeaderView.self, forHeaderFooterViewReuseIdentifier: "feedHeader")
+        feedTableView.registerClass(FeedReplyCell.self, forCellReuseIdentifier: "feedreply")
         
         print("id==\(contentID)")
         self.getDateWithContetID(contentID)
         self.getReplyWithId(contentID)
+        
+        
     }
-//    get date
-    func getDateWithContetID(content:NSInteger)->() {
+        //    get date
+       func getDateWithContetID(content:NSInteger)->() {
           let paramerers = ["id":content]
         Alamofire.request(.GET, V2_CONTENT, parameters:paramerers)
             .responseJSON { (request, response, result) -> Void in
-                self.jsonDate = JSON(result.value!)
-                print("详情：\(self.jsonDate)")
-          let  string = self.jsonDate[0]["content_rendered"].stringValue
+           self.jsonDate   = JSON(result.value!)
+           let  string     = self.jsonDate[0]["content_rendered"].stringValue
            self.htmlString = "<html><head><style>img{height:auto;width:100%}</style></head><body >"+string+"</body></html"
-
            self.contenCellHeight = self.htmlString.sizeCalculationWithWidthAndHeightAndFont(Screen_W, height: 10000, font: UIFont.systemFontOfSize(14)).height
              self.feedTableView.reloadSections(NSIndexSet.init(index: 0), withRowAnimation: UITableViewRowAnimation.None)
          }
     }
+    
+    func regularExpression(htmlString:NSString)-> (){
+        let regular = ""
+        let reg = NSRegularExpression(regularExpression(regular))
+        let match = reg.matchesInString(regular, options: NSMatchingOptions.ReportCompletion, range: NSMakeRange(0, htmlString.length))
+        
+        if match.count != 0 {
+            for mat in match {
+                let rang = mat.range
+                print("匹配结果\(rang.location,rang.length,htmlString.substringWithRange(rang))")
+            }
+        }
+        
+    }
+    
 //    get reply
     func getReplyWithId(contentID:NSInteger){
-        let paramerers = ["id":contentID];
-        
-        Alamofire.request(.GET,VC_CONTENT_REPLY, parameters: paramerers)
-            .responseJSON { (reuest, response, result) in
-                self.replyDate = JSON(result.value!)
-                print("回复：\(self.replyDate)")
-           self.feedTableView.reloadSections(NSIndexSet.init(index: 1), withRowAnimation: UITableViewRowAnimation.None)
+         let par = ["topic_id":contentID]
+        NetworkEngine.getDataFromServerWithURLStringAndParameter(VC_CONTENT_REPLY,parameter: par) { (res) in
+            print("res＋\(res)")
+            
+            
+            for dic in res {
+            
+                let reply = Reflect.model(json: dic, type: FeeReplyModel.self)
+                self.feedReplyModelArray.addObject(reply)
+                let contenString = reply.content_rendered
+                 let htmlString = "<html><head><style>img{height:auto;width:100%}</style></head><body >"+contenString+"</body></html"
+                 reply.content_rendered = htmlString
+                
+                let cellHeight:CGFloat = htmlString.sizeCalculationWithWidthAndHeightAndFont(Screen_W - 74, height: 10000, font: UIFont.systemFontOfSize(14)).height + 55;
+                self.feedReplyCellHeight.addObject(cellHeight)
+                
+                
+            }
+            
+            self.feedTableView.reloadSections(NSIndexSet.init(index: 1), withRowAnimation: UITableViewRowAnimation.None)
+
         }
+        
         
     }
     
@@ -81,7 +114,7 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
         case 0:
             return 1
         case 1:
-            return self.replyDate.count
+            return self.feedReplyModelArray.count
         default:
             return 0
         }
@@ -90,20 +123,27 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("feedContent") as! FeedContentCell
-            cell.content.frame = CGRectMake(0, 0, Screen_W, contenCellHeight)
-            cell.content.attributedText =  self.htmlString.utf8Data?.attributedString
+            let cell                    = tableView.dequeueReusableCellWithIdentifier("feedContent") as! FeedContentCell
+            cell.content.frame          = CGRectMake(0, 0, Screen_W, contenCellHeight)
+            cell.content.attributedText = self.htmlString.utf8Data?.attributedString
 
             return cell;
         }
         
         else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("feedContent") as! FeedContentCell
+            let cell                     = tableView.dequeueReusableCellWithIdentifier("feedreply") as! FeedReplyCell
+            let replyModel:FeeReplyModel = self.feedReplyModelArray[indexPath.row] as! FeeReplyModel
+            let urlString                = V2_BASE + replyModel.member.avatar_normal
+
+            cell.avatar.kf_setImageWithURL(NSURL(string:urlString)!, forState: UIControlState.Normal)
+            cell.conten.attributedText             = replyModel.content_rendered.utf8Data?.attributedString
+            cell.nameAndTime.text        = replyModel.member.username
             return cell;
         }
       
         
     }
+    
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
@@ -120,7 +160,7 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
             return contenCellHeight
         }
         else {
-            return 30
+            return feedReplyCellHeight[indexPath.row] as! CGFloat
         }
     }
    
@@ -136,7 +176,7 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
         else{
             let reply = UILabel()
             reply.frame = CGRectMake(0, 0, Screen_W, 44)
-            if self.replyDate.count == 0 {
+            if self.feedReplyModelArray.count == 0 {
                 reply.text = "  暂时没有回复"
             }
             else {

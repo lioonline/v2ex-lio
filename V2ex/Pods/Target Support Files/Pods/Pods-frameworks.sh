@@ -89,6 +89,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/SlideMenuControllerSwift.framework"
   install_framework "Pods/SnapKit.framework"
   install_framework "Pods/SwiftyJSON.framework"
+  install_framework "Pods/TTReflect.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/Alamofire.framework"
@@ -96,4 +97,5 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/SlideMenuControllerSwift.framework"
   install_framework "Pods/SnapKit.framework"
   install_framework "Pods/SwiftyJSON.framework"
+  install_framework "Pods/TTReflect.framework"
 fi

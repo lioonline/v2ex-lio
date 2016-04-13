@@ -127,6 +127,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 self.json = JSON(result.value!)
                 print(self.json)
                 
+                
                 self.homeTableView.reloadData()
         }
         

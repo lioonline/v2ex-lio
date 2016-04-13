@@ -11,13 +11,15 @@
 		9B085BC21CBB993A00FC39E7 /* DAExpandAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B085BC11CBB993A00FC39E7 /* DAExpandAnimation.swift */; };
 		9B085BC41CBBA6C600FC39E7 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B085BC31CBBA6C600FC39E7 /* HomeTableViewController.swift */; };
 		9B085BD01CBBDE5E00FC39E7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B085BCF1CBBDE5E00FC39E7 /* HomeViewController.swift */; };
-		9B085BD31CBBEA7F00FC39E7 /* NetworkEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B085BD21CBBEA7F00FC39E7 /* NetworkEngine.swift */; };
 		9B085BD51CBBF10500FC39E7 /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B085BD41CBBF10500FC39E7 /* MemberModel.swift */; };
 		9B085BD71CBBF11700FC39E7 /* NodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B085BD61CBBF11700FC39E7 /* NodeModel.swift */; };
 		9B085BDB1CBCB39700FC39E7 /* FeedDetatilHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B085BDA1CBCB39700FC39E7 /* FeedDetatilHeaderView.swift */; };
 		9B97D0DD1CBCD43600D8ACC1 /* FeedContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97D0DC1CBCD43600D8ACC1 /* FeedContentCell.swift */; };
 		9B97D0DF1CBCE61400D8ACC1 /* FeedReplyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97D0DE1CBCE61400D8ACC1 /* FeedReplyCell.swift */; };
 		9B97D0E11CBCEB6900D8ACC1 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97D0E01CBCEB6900D8ACC1 /* ContentViewController.swift */; };
+		9BB029331CBE86B900858F69 /* V2FPSLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB029321CBE86B900858F69 /* V2FPSLabel.swift */; };
+		9BC5CC3F1CBE355300802B03 /* NetworkEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC5CC3E1CBE355300802B03 /* NetworkEngine.swift */; };
+		9BD5B9F51CBE72D600316524 /* FeeReplyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD5B9F41CBE72D600316524 /* FeeReplyModel.swift */; };
 		FB0866571BBA764200D9D90D /* NewFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0866561BBA764200D9D90D /* NewFeedCell.swift */; };
 		FB0866591BBA8F2700D9D90D /* V2Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0866581BBA8F2700D9D90D /* V2Tools.swift */; };
 		FB29BACA1BBA2EEF00FD0015 /* APIURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29BAC91BBA2EEF00FD0015 /* APIURL.swift */; };
@@ -54,13 +56,15 @@
 		9B085BC11CBB993A00FC39E7 /* DAExpandAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAExpandAnimation.swift; sourceTree = "<group>"; };
 		9B085BC31CBBA6C600FC39E7 /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		9B085BCF1CBBDE5E00FC39E7 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		9B085BD21CBBEA7F00FC39E7 /* NetworkEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkEngine.swift; sourceTree = "<group>"; };
 		9B085BD41CBBF10500FC39E7 /* MemberModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
 		9B085BD61CBBF11700FC39E7 /* NodeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeModel.swift; sourceTree = "<group>"; };
 		9B085BDA1CBCB39700FC39E7 /* FeedDetatilHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedDetatilHeaderView.swift; sourceTree = "<group>"; };
 		9B97D0DC1CBCD43600D8ACC1 /* FeedContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedContentCell.swift; sourceTree = "<group>"; };
 		9B97D0DE1CBCE61400D8ACC1 /* FeedReplyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedReplyCell.swift; sourceTree = "<group>"; };
 		9B97D0E01CBCEB6900D8ACC1 /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		9BB029321CBE86B900858F69 /* V2FPSLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2FPSLabel.swift; sourceTree = "<group>"; };
+		9BC5CC3E1CBE355300802B03 /* NetworkEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkEngine.swift; sourceTree = "<group>"; };
+		9BD5B9F41CBE72D600316524 /* FeeReplyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeeReplyModel.swift; sourceTree = "<group>"; };
 		D2992A311CCD35FBBD024D04 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FB0866561BBA764200D9D90D /* NewFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFeedCell.swift; sourceTree = "<group>"; };
 		FB0866581BBA8F2700D9D90D /* V2Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2Tools.swift; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				9B085BD41CBBF10500FC39E7 /* MemberModel.swift */,
+				9BD5B9F41CBE72D600316524 /* FeeReplyModel.swift */,
 				9B085BD61CBBF11700FC39E7 /* NodeModel.swift */,
 			);
 			name = Model;
@@ -232,9 +237,10 @@
 		FB86CA501BB937C800AD501A /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				9BB029321CBE86B900858F69 /* V2FPSLabel.swift */,
 				FB29BAC91BBA2EEF00FD0015 /* APIURL.swift */,
 				FB0866581BBA8F2700D9D90D /* V2Tools.swift */,
-				9B085BD21CBBEA7F00FC39E7 /* NetworkEngine.swift */,
+				9BC5CC3E1CBE355300802B03 /* NetworkEngine.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -423,16 +429,18 @@
 			files = (
 				9B97D0E11CBCEB6900D8ACC1 /* ContentViewController.swift in Sources */,
 				FB86CA211BB92B8F00AD501A /* ViewController.swift in Sources */,
+				9BB029331CBE86B900858F69 /* V2FPSLabel.swift in Sources */,
 				9B085BC41CBBA6C600FC39E7 /* HomeTableViewController.swift in Sources */,
+				9BD5B9F51CBE72D600316524 /* FeeReplyModel.swift in Sources */,
 				9B97D0DF1CBCE61400D8ACC1 /* FeedReplyCell.swift in Sources */,
 				FB29BACA1BBA2EEF00FD0015 /* APIURL.swift in Sources */,
 				9B97D0DD1CBCD43600D8ACC1 /* FeedContentCell.swift in Sources */,
+				9BC5CC3F1CBE355300802B03 /* NetworkEngine.swift in Sources */,
 				FBF6BAB31BBAD8BE00EDB066 /* FeedDetatilViewController.swift in Sources */,
 				FB0866571BBA764200D9D90D /* NewFeedCell.swift in Sources */,
 				9B085BD71CBBF11700FC39E7 /* NodeModel.swift in Sources */,
 				9B085BDB1CBCB39700FC39E7 /* FeedDetatilHeaderView.swift in Sources */,
 				9B085BD01CBBDE5E00FC39E7 /* HomeViewController.swift in Sources */,
-				9B085BD31CBBEA7F00FC39E7 /* NetworkEngine.swift in Sources */,
 				FB0866591BBA8F2700D9D90D /* V2Tools.swift in Sources */,
 				9B085BC21CBB993A00FC39E7 /* DAExpandAnimation.swift in Sources */,
 				FB86CA1F1BB92B8F00AD501A /* AppDelegate.swift in Sources */,

@@ -16,8 +16,9 @@ class FeedReplyCell: UITableViewCell {
     }
 
     let avatar = UIButton()
-    let name = UILabel()
-    let time = UILabel()
+    let nameAndTime = UILabel()
+//    let name = UILabel()
+//    let time = UILabel()
     let conten = UITextView()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -36,6 +37,40 @@ class FeedReplyCell: UITableViewCell {
     
     
     private func initView(){
+        self.contentView.addSubview(avatar)
+        avatar.layer.cornerRadius = 4
+        avatar.clipsToBounds = true
+//        self.avatar.backgroundColor = UIColor.redColor()
+        self.avatar.layer.cornerRadius = 4
+        self.avatar.snp_makeConstraints { (make) in
+            make.top.equalTo(self.contentView.snp_top).offset(10)
+            make.left.equalTo(self.contentView.snp_left).offset(10)
+            make.height.width.equalTo(44)
+        }
+        
+        
+        self.contentView.addSubview(nameAndTime)
+//        self.nameAndTime.backgroundColor = UIColor.yellowColor()
+        self.nameAndTime.snp_makeConstraints { (make) in
+            make.left.equalTo(self.avatar.snp_right).offset(10)
+            make.top.equalTo(avatar.snp_top)
+            make.height.equalTo(30)
+            make.right.equalTo(self.contentView.snp_right).offset(-60)
+        }
+        
+        
+        self.contentView.addSubview(self.conten)
+        conten.font = UIFont.systemFontOfSize(16)
+        conten.userInteractionEnabled = false
+//        self.conten.backgroundColor = UIColor.greenColor()
+        self.conten.snp_makeConstraints { (make) in
+            make.top.equalTo(nameAndTime.snp_bottom).offset(5)
+            make.left.equalTo(nameAndTime.snp_left)
+            make.right.equalTo(self.contentView.snp_right).offset(-10)
+            make.bottom.equalTo(self.contentView.snp_bottom).offset(-10)
+        }
+        
+        
         
     }
     

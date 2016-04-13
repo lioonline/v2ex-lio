@@ -25,7 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = nav
         
         
-        
+        let fpsLabel = V2FPSLabel(frame: CGRectMake(Screen_W - 80, Screen_H-40, 55, 20));
+        self.window?.addSubview(fpsLabel);
         
         
         return true
