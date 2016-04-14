@@ -17,7 +17,7 @@ class FeedContentCell: UITableViewCell {
         // Drawing code
     }
     */
-    let content  = UITextView()
+    let content  = LeeAttTextView()
   
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -33,10 +33,30 @@ class FeedContentCell: UITableViewCell {
     }
     
     func initView(){
-        self.contentView.addSubview(content)
         
+     
+        
+        self.contentView.addSubview(content)
+        content.font = UIFont.systemFontOfSize(17)
+        content.snp_makeConstraints { (make) in
+            make.top.bottom.left.right.equalTo(0)
+        }
+        
+        
+        
+        
+        
+//        content.lineBreakMode = NSLineBreakMode.ByTruncatingTail
+////        content.numberOfLines = 0
         content.userInteractionEnabled  = false
-        content.font = UIFont.systemFontOfSize(14)
+//        content.font = UIFont.systemFontOfSize(14)
+//
+//        content.snp_makeConstraints { (make) in
+//            make.left.equalTo(self.contentView.snp_left).offset(10)
+//            make.right.equalTo(self.contentView.snp_right).offset(-10)
+//            make.top.equalTo(self.contentView.snp_top).offset(10)
+//            make.bottom.equalTo(self.contentView.snp_bottom).offset(-10)
+//        }
     }
 
 }

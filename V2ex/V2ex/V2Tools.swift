@@ -77,3 +77,8 @@ extension NSData {
     }
 }
 
+
+extension String {
+    var count: Int { return self.characters.count }
+}
+

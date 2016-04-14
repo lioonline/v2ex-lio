@@ -12,7 +12,7 @@ import SwiftyJSON
 import TTReflect
 
 
-class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIWebViewDelegate {
    
     var contentID = 0;
     private     var jsonDate:JSON = nil
@@ -22,7 +22,8 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
     private    var  feedTableView = UITableView()
     private     var  contenCellHeight:CGFloat = 0.0
     private var  htmlString = ""
-    
+    private var  contentModel = FeedContentModel()
+    private  var contentHeight:CGFloat = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,15 +51,26 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
     }
         //    get date
        func getDateWithContetID(content:NSInteger)->() {
-          let paramerers = ["id":content]
-        Alamofire.request(.GET, V2_CONTENT, parameters:paramerers)
-            .responseJSON { (request, response, result) -> Void in
-           self.jsonDate   = JSON(result.value!)
-           let  string     = self.jsonDate[0]["content_rendered"].stringValue
-           self.htmlString = "<html><head><style>img{height:auto;width:100%}</style></head><body >"+string+"</body></html"
-           self.contenCellHeight = self.htmlString.sizeCalculationWithWidthAndHeightAndFont(Screen_W, height: 10000, font: UIFont.systemFontOfSize(14)).height
-             self.feedTableView.reloadSections(NSIndexSet.init(index: 0), withRowAnimation: UITableViewRowAnimation.None)
-         }
+          let paramerters = ["id":content]
+         NetworkEngine.getDataFromServerWithURLStringAndParameter(V2_CONTENT,parameter: paramerters) { (restult) in
+            
+            print("content--\(restult)")
+            self.contentModel = Reflect.model(json: restult[0], type: FeedContentModel.self)
+            self.htmlString = "<html><head><style>img{height:auto;width:100%}</style></head><body >"+self.contentModel.content_rendered+"</body></html"
+
+             self.contentModel.content_rendered = self.htmlString
+            self.contenCellHeight = self.htmlString.sizeCalculationWithWidthAndHeightAndFont(Screen_W - 20, height: 10000, font: UIFont.systemFontOfSize(14)).height
+            
+            let mainQueue = dispatch_get_main_queue()
+          dispatch_async(mainQueue, { 
+                        self.feedTableView.reloadData()
+          })
+           
+            
+  
+        }
+        
+
     }
     
     func regularExpression(htmlString:NSString)-> (){
@@ -84,19 +96,26 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
             
             for dic in res {
             
-                let reply = Reflect.model(json: dic, type: FeeReplyModel.self)
+                let reply              = Reflect.model(json: dic, type: FeedReplyModel.self)
                 self.feedReplyModelArray.addObject(reply)
-                let contenString = reply.content_rendered
-                 let htmlString = "<html><head><style>img{height:auto;width:100%}</style></head><body >"+contenString+"</body></html"
-                 reply.content_rendered = htmlString
-                
-                let cellHeight:CGFloat = htmlString.sizeCalculationWithWidthAndHeightAndFont(Screen_W - 74, height: 10000, font: UIFont.systemFontOfSize(14)).height + 55;
+                let contenString       = reply.content_rendered
+                let htmlString         = "<html><head><style>img{height:auto;width:100%}</style></head><body >"+contenString+"</body></html"
+                reply.content_rendered = htmlString
+
+                let cellHeight:CGFloat = reply.content.sizeCalculationWithWidthAndHeightAndFont(Screen_W - 74, height: 10000, font: UIFont.systemFontOfSize(14)).height + 45;
                 self.feedReplyCellHeight.addObject(cellHeight)
                 
                 
             }
             
-            self.feedTableView.reloadSections(NSIndexSet.init(index: 1), withRowAnimation: UITableViewRowAnimation.None)
+            
+            
+            
+            let mainQueue = dispatch_get_main_queue()
+            dispatch_async(mainQueue, {
+                self.feedTableView.reloadSections(NSIndexSet.init(index: 1), withRowAnimation: UITableViewRowAnimation.None)
+            })
+            
 
         }
         
@@ -124,20 +143,33 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
         
         if indexPath.section == 0 {
             let cell                    = tableView.dequeueReusableCellWithIdentifier("feedContent") as! FeedContentCell
-            cell.content.frame          = CGRectMake(0, 0, Screen_W, contenCellHeight)
-            cell.content.attributedText = self.htmlString.utf8Data?.attributedString
+            cell.content.attributedText = self.contentModel.content_rendered.utf8Data?.attributedString
+            
 
+//            cell.content.text = self.contentModel.content
+//              cell.content.loadHTMLString(self.contentModel.content_rendered, baseURL: nil)
+//            cell.content.delegate = self
+//            cell.content.lee_text(self.contentModel.content)
+//            cell.backgroundColor = UIColor.clearColor()
+            print("contentSize:\(cell.content.contentSize)  =  \(cell.content.bounds.height)")
+//            let size = cell.content.sizeThatFits(CGSizeMake(Screen_W, 100000))
+//            cell.content.bounds = CGRectMake(0, 0, cell.content.bounds.width, size.height)
+//            print("cellheight\(cell.bounds.height) ===  cellcontentviewheoght\(cell.contentView.bounds.height)")
+            
             return cell;
         }
         
         else {
             let cell                     = tableView.dequeueReusableCellWithIdentifier("feedreply") as! FeedReplyCell
-            let replyModel:FeeReplyModel = self.feedReplyModelArray[indexPath.row] as! FeeReplyModel
+            let replyModel:FeedReplyModel = self.feedReplyModelArray[indexPath.row] as! FeedReplyModel
             let urlString                = V2_BASE + replyModel.member.avatar_normal
-
+      
             cell.avatar.kf_setImageWithURL(NSURL(string:urlString)!, forState: UIControlState.Normal)
-            cell.conten.attributedText             = replyModel.content_rendered.utf8Data?.attributedString
+            cell.conten.lee_text(replyModel.content)
+
             cell.nameAndTime.text        = replyModel.member.username
+            cell.conten.sizeToFit()
+
             return cell;
         }
       
@@ -156,7 +188,7 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            
+            print("contenCellHeight\(contenCellHeight)")
             return contenCellHeight
         }
         else {
@@ -167,9 +199,8 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             let headerFirst  =  tableView.dequeueReusableHeaderFooterViewWithIdentifier("feedHeader") as! FeedDetatilHeaderView
-            headerFirst.title.text = jsonDate[0]["title"].stringValue
-            let urlString = V2_BASE + jsonDate[0]["member"]["avatar_normal"].stringValue
-            
+            headerFirst.title.text = self.contentModel.title
+            let urlString = V2_BASE + self.contentModel.member.avatar_normal
             headerFirst.avatar.kf_setImageWithURL(NSURL(string: urlString)!, forState: UIControlState.Normal)
             return headerFirst;
         }
@@ -194,9 +225,12 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
     
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let content  = ContentViewController()
-        content.content = self.htmlString
-        self.navigationController?.pushViewController(content, animated: true)
+        if  indexPath.section == 0 {
+            let content  = ContentViewController()
+            content.content = self.htmlString
+            self.navigationController?.pushViewController(content, animated: true)
+        }
+       
     }
     
     
@@ -219,6 +253,7 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
         // Dispose of any resources that can be recreated.
     }
     
+    
 
     /*
     // MARK: - Navigation
@@ -231,3 +266,5 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
     */
 
 }
+
+

@@ -8,5 +8,6 @@ pod 'SwiftyJSON'
 pod 'Kingfisher', '~> 1.6.0'
 pod 'SlideMenuControllerSwift'
 pod 'TTReflect', '~> 1.1.0'
+#pod 'YYText'
 pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 

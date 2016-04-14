@@ -9,7 +9,7 @@
 import UIKit
 import  TTReflect
 
-class FeeReplyModel: NSObject {
+class FeedReplyModel: NSObject {
 
     var content:String          = ""
     var content_rendered:String = ""

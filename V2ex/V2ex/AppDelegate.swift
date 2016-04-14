@@ -28,7 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let fpsLabel = V2FPSLabel(frame: CGRectMake(Screen_W - 80, Screen_H-40, 55, 20));
         self.window?.addSubview(fpsLabel);
         
-        
+        let strtt = "https://segmentfault.com/q/1010000000584340是一个@儿子&的的&oooooo&&dfsafsdg#话题#ooodd😄pppp🐷0000email:cocoalee@gmail.com 999 1234444@qq.com  phone 13641423304   username:tatoao   "
+        LeeLabel.transformString(strtt)
         return true
     }
 

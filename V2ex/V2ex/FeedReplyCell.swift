@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedReplyCell: UITableViewCell {
+class FeedReplyCell: UITableViewCell,UITextViewDelegate {
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,7 +19,7 @@ class FeedReplyCell: UITableViewCell {
     let nameAndTime = UILabel()
 //    let name = UILabel()
 //    let time = UILabel()
-    let conten = UITextView()
+    let conten = LeeAttTextView()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -50,19 +50,27 @@ class FeedReplyCell: UITableViewCell {
         
         
         self.contentView.addSubview(nameAndTime)
-//        self.nameAndTime.backgroundColor = UIColor.yellowColor()
+       nameAndTime.textColor = RGBA(128, g: 128, b: 128, a: 1)
+        nameAndTime.font =  UIFont.systemFontOfSize(12)
         self.nameAndTime.snp_makeConstraints { (make) in
             make.left.equalTo(self.avatar.snp_right).offset(10)
             make.top.equalTo(avatar.snp_top)
-            make.height.equalTo(30)
+            make.height.equalTo(20)
             make.right.equalTo(self.contentView.snp_right).offset(-60)
         }
         
         
         self.contentView.addSubview(self.conten)
-        conten.font = UIFont.systemFontOfSize(16)
-        conten.userInteractionEnabled = false
-//        self.conten.backgroundColor = UIColor.greenColor()
+        conten.font = UIFont.systemFontOfSize(17)
+//        conten.lineBreakMode = NSLineBreakMode.ByTruncatingTail
+//        conten.numberOfLines = 0
+//        conten.userInteractionEnabled = false
+//        self.conten.backgroundColor = UIColor.grayColor()
+        conten.scrollEnabled = false
+        conten.editable = false
+        conten.textContainer.lineFragmentPadding = 0
+        conten.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        conten.delegate = self
         self.conten.snp_makeConstraints { (make) in
             make.top.equalTo(nameAndTime.snp_bottom).offset(5)
             make.left.equalTo(nameAndTime.snp_left)
@@ -75,6 +83,12 @@ class FeedReplyCell: UITableViewCell {
     }
     
     
+    func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool{
+        
+//        验证是邮箱 电话 还是URL
+        
+        return true
+    }
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -83,3 +97,6 @@ class FeedReplyCell: UITableViewCell {
     }
 
 }
+
+
+
