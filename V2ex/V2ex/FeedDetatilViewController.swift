@@ -36,7 +36,7 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
         
         feedTableView = UITableView(frame: self.view.bounds, style: UITableViewStyle.Grouped);
         self.view.addSubview(feedTableView);
-        feedTableView.delegate = self;
+        feedTableView.delegate   = self;
         feedTableView.dataSource = self;
         
         
@@ -44,7 +44,6 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
         feedTableView.registerClass(FeedDetatilHeaderView.self, forHeaderFooterViewReuseIdentifier: "feedHeader")
         feedTableView.registerClass(FeedReplyCell.self, forCellReuseIdentifier: "feedreply")
         
-        print("id==\(contentID)")
         self.getDateWithContetID(contentID)
         self.getReplyWithId(contentID)
         
@@ -54,45 +53,25 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
        func getDateWithContetID(content:NSInteger)->() {
           let paramerters = ["id":content]
          NetworkEngine.getDataFromServerWithURLStringAndParameter(V2_CONTENT,parameter: paramerters) { (restult) in
+
+            self.contentModel     = Reflect.model(json: restult[0], type: FeedContentModel.self)
+            self.htmlString       = "<html><head><style>img{height:auto;width:100%}</style></head><body >"+self.contentModel.content_rendered+"</body></html"
+            self.contenCellHeight = self.htmlString.sizeCalculationWithWidthAndHeightAndFont(Screen_W - 20, height: 10000, font: UIFont.systemFontOfSize(14)).height + 20
             
-            print("content--\(restult)")
-            self.contentModel = Reflect.model(json: restult[0], type: FeedContentModel.self)
-            self.htmlString = "<html><head><style>img{height:auto;width:100%}</style></head><body >"+self.contentModel.content_rendered+"</body></html"
-//            let data = self.htmlString.dataUsingEncoding(NSUTF32StringEncoding, allowLossyConversion: true)
-//            self.htmlTest = try! NSMutableAttributedString(data: data!, options: [NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType], documentAttributes:nil)
-            self.contenCellHeight = self.htmlString.sizeCalculationWithWidthAndHeightAndFont(Screen_W - 20, height: 10000, font: UIFont.systemFontOfSize(14)).height
+            
             self.contentModel.content_rendered = self.htmlString
             let mainQueue = dispatch_get_main_queue()
           dispatch_async(mainQueue, { 
                         self.feedTableView.reloadData()
           })
-           
-            
-  
         }
-        
-
     }
     
-    func regularExpression(htmlString:NSString)-> (){
-        let regular = ""
-        let reg = NSRegularExpression(regularExpression(regular))
-        let match = reg.matchesInString(regular, options: NSMatchingOptions.ReportCompletion, range: NSMakeRange(0, htmlString.length))
-        
-        if match.count != 0 {
-            for mat in match {
-                let rang = mat.range
-                print("匹配结果\(rang.location,rang.length,htmlString.substringWithRange(rang))")
-            }
-        }
-        
-    }
     
-//    get reply
+    //    get reply
     func getReplyWithId(contentID:NSInteger){
          let par = ["topic_id":contentID]
         NetworkEngine.getDataFromServerWithURLStringAndParameter(VC_CONTENT_REPLY,parameter: par) { (res) in
-            print("res＋\(res)")
             
             
             for dic in res {
@@ -104,17 +83,12 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
                 self.feedReplyModelArray.addObject(reply)
                 
                 let cellHeight:CGFloat = reply.content.sizeCalculationWithWidthAndHeightAndFont(Screen_W - 74, height: 10000, font: UIFont.systemFontOfSize(14)).height + 45;
-                self.contenCellHeight = cellHeight
                 self.feedReplyCellHeight.addObject(cellHeight)
 
             }
             
-            
-            
-            
             let mainQueue = dispatch_get_main_queue()
             dispatch_async(mainQueue, {
-//                self.feedTableView.reloadSections(NSIndexSet.init(index: 1), withRowAnimation: UITableViewRowAnimation.None)
                 self.feedTableView.reloadData()
             })
             
@@ -145,7 +119,11 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
         
         if indexPath.section == 0 {
             let cell                    = tableView.dequeueReusableCellWithIdentifier("feedContent") as! FeedContentCell
-            cell.content.attributedText =  self.contentModel.content_rendered.utf8Data?.attributedString
+            let att  =  self.contentModel.content_rendered.utf8Data?.attributedString
+            let attmut  = NSMutableAttributedString.init(attributedString: att!)
+            attmut.addAttribute(NSForegroundColorAttributeName, value:  RGBA(119, g: 128, b: 135, a: 1), range: NSMakeRange(0, attmut.string.count))
+            attmut.addAttribute(NSFontAttributeName, value: UIFont.systemFontOfSize(14), range: NSMakeRange(0, attmut.string.count))
+            cell.content.attributedText = attmut
             cell.content.sizeToFit()
             return cell;
         }
@@ -195,10 +173,10 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
             return headerFirst;
         }
         else{
-            let reply = UILabel()
+            let reply   = UILabel()
             reply.frame = CGRectMake(0, 0, Screen_W, 44)
             if self.feedReplyModelArray.count == 0 {
-                reply.text = "  "
+            reply.text  = "  "
             }
             else {
                 reply.text = "  回复"
