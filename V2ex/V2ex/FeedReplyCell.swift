@@ -39,7 +39,6 @@ class FeedReplyCell: UITableViewCell,UITextViewDelegate {
         avatar.layer.cornerRadius = 4
         avatar.clipsToBounds = true
 //        self.avatar.backgroundColor = UIColor.redColor()
-        self.avatar.layer.cornerRadius = 4
         self.avatar.snp_makeConstraints { (make) in
             make.top.equalTo(self.contentView.snp_top).offset(10)
             make.left.equalTo(self.contentView.snp_left).offset(10)
@@ -82,17 +81,11 @@ class FeedReplyCell: UITableViewCell,UITextViewDelegate {
         
 //        验证是邮箱 电话 还是URL
          NSLog("链接地址:\(URL.description)")
-        
-//        if URL.description.containsString("http"){
-//            
-//            return true
-//        }
-//        else {
-            let alert = UIAlertView.init(title: URL.description, message: "", delegate: nil, cancelButtonTitle: "OK")
+
+        let str = textView.attributedText.attributedSubstringFromRange(characterRange)
+            let alert = UIAlertView.init(title: str.string, message: "", delegate: nil, cancelButtonTitle: "OK")
             alert.show()
-//            return false
-         return false
-//        }
+            return false
         
         
         

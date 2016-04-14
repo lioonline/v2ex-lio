@@ -98,17 +98,15 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
             for dic in res {
             
                 let reply              = Reflect.model(json: dic, type: FeedReplyModel.self)
-                self.feedReplyModelArray.addObject(reply)
                 let contenString       = reply.content_rendered
                 let htmlString         = "<html><head><style>img {max-width: 100%; height: auto;}</style></head><body >"+contenString+"</body></html"
-                
                 reply.content_rendered = htmlString
-
+                self.feedReplyModelArray.addObject(reply)
+                
                 let cellHeight:CGFloat = reply.content.sizeCalculationWithWidthAndHeightAndFont(Screen_W - 74, height: 10000, font: UIFont.systemFontOfSize(14)).height + 45;
                 self.contenCellHeight = cellHeight
                 self.feedReplyCellHeight.addObject(cellHeight)
-                
-                
+
             }
             
             
@@ -148,7 +146,7 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
         if indexPath.section == 0 {
             let cell                    = tableView.dequeueReusableCellWithIdentifier("feedContent") as! FeedContentCell
             cell.content.attributedText =  self.contentModel.content_rendered.utf8Data?.attributedString
-            
+            cell.content.sizeToFit()
             return cell;
         }
         
@@ -156,13 +154,12 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
             let cell                     = tableView.dequeueReusableCellWithIdentifier("feedreply") as! FeedReplyCell
             let replyModel:FeedReplyModel = self.feedReplyModelArray[indexPath.row] as! FeedReplyModel
             let urlString                = V2_BASE + replyModel.member.avatar_normal
-      
             cell.avatar.kf_setImageWithURL(NSURL(string:urlString)!, forState: UIControlState.Normal)
             cell.conten.lee_text(replyModel.content)
 
             cell.nameAndTime.text        = replyModel.member.username
             cell.conten.sizeToFit()
-
+            
             return cell;
         }
       

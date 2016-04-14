@@ -38,11 +38,19 @@ class LeeAttTextView: UITextView {
         for itemHTTP in httpArray {
             let rang = itemHTTP.range
             let strhttp = text.substringWithRange(rang)
-            print("http-----:\(strhttp)")
+            print("http-----:\(strhttp)------\(rang)")
             attText.addAttribute(NSLinkAttributeName, value: strhttp, range: rang)
             
             
         }
+        
+        
+//        print("attText------------>\(attText)")
+//        print("attTextString------>\(attTextString)")
+//
+        
+        
+        
         
         //解析@
         let regexAt = "@[\\u4e00-\\u9fa5\\w\\-]+"
@@ -125,6 +133,8 @@ class LeeAttTextView: UITextView {
 
 
         attText.addAttribute(NSFontAttributeName, value: UIFont.systemFontOfSize(14), range: NSMakeRange(0, attTextString.count))
+        attText.addAttribute(NSForegroundColorAttributeName, value:  RGBA(119, g: 128, b: 135, a: 1), range: NSMakeRange(0, attTextString.count))
+      
         self.attributedText = attText
     }
     
