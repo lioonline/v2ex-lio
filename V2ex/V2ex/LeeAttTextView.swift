@@ -73,18 +73,18 @@ class LeeAttTextView: UITextView {
         
         
         //解析& 无效
-        
-        let regexAnd = "\\$\\*?[\u{4e00}-\u{9fa5}|a-zA-Z|\\d]{2,8}(\\((SH|SZ)?\\d+\\))?"
-        
-        
-        let regularAnd = try! NSRegularExpression.init(pattern: regexAnd, options: NSRegularExpressionOptions.CaseInsensitive)
-        let andArray = regularAnd.matchesInString(attTextString, options: NSMatchingOptions.ReportProgress, range: NSMakeRange(0, attTextString.count))
-        
-        for itemAnd in andArray {
-            let rang = itemAnd.range
-            let strAnd = text.substringWithRange(rang)
-            print("and-----:\(strAnd)")
-        }
+//        
+//        let regexAnd = "\\$\\*?[\u{4e00}-\u{9fa5}|a-zA-Z|\\d]{2,8}(\\((SH|SZ)?\\d+\\))?"
+//        
+//        
+//        let regularAnd = try! NSRegularExpression.init(pattern: regexAnd, options: NSRegularExpressionOptions.CaseInsensitive)
+//        let andArray = regularAnd.matchesInString(attTextString, options: NSMatchingOptions.ReportProgress, range: NSMakeRange(0, attTextString.count))
+//        
+//        for itemAnd in andArray {
+//            let rang = itemAnd.range
+//            let strAnd = text.substringWithRange(rang)
+//            print("and-----:\(strAnd)")
+//        }
         
         // 解析表情  无效
         

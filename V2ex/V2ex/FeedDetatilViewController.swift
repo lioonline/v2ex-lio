@@ -13,17 +13,18 @@ import TTReflect
 
 
 class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIWebViewDelegate {
-   
-    var contentID = 0;
-    private     var jsonDate:JSON = nil
-    private     var replyDate:JSON = nil
-    private     var feedReplyModelArray:NSMutableArray  = NSMutableArray()
-    private     var  feedReplyCellHeight = NSMutableArray()
-    private    var  feedTableView = UITableView()
-    private     var  contenCellHeight:CGFloat = 0.0
-    private var  htmlString = ""
-    private var  contentModel = FeedContentModel()
-    private  var contentHeight:CGFloat = 0.0
+
+    var contentID                                      = 0;
+    private     var jsonDate:JSON                      = nil
+    private     var replyDate:JSON                     = nil
+    private     var feedReplyModelArray:NSMutableArray = NSMutableArray()
+    private     var  feedReplyCellHeight               = NSMutableArray()
+    private     var  feedTableView                     = UITableView()
+    private     var  contenCellHeight:CGFloat          = 0.0
+    private     var  htmlString                        = ""
+    private     var  contentModel                      = FeedContentModel()
+    private     var contentHeight:CGFloat              = 0.0
+    private     var htmlTest:NSMutableAttributedString = NSMutableAttributedString()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,10 +58,10 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
             print("content--\(restult)")
             self.contentModel = Reflect.model(json: restult[0], type: FeedContentModel.self)
             self.htmlString = "<html><head><style>img{height:auto;width:100%}</style></head><body >"+self.contentModel.content_rendered+"</body></html"
-
-             self.contentModel.content_rendered = self.htmlString
+//            let data = self.htmlString.dataUsingEncoding(NSUTF32StringEncoding, allowLossyConversion: true)
+//            self.htmlTest = try! NSMutableAttributedString(data: data!, options: [NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType], documentAttributes:nil)
             self.contenCellHeight = self.htmlString.sizeCalculationWithWidthAndHeightAndFont(Screen_W - 20, height: 10000, font: UIFont.systemFontOfSize(14)).height
-            
+            self.contentModel.content_rendered = self.htmlString
             let mainQueue = dispatch_get_main_queue()
           dispatch_async(mainQueue, { 
                         self.feedTableView.reloadData()
@@ -99,10 +100,12 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
                 let reply              = Reflect.model(json: dic, type: FeedReplyModel.self)
                 self.feedReplyModelArray.addObject(reply)
                 let contenString       = reply.content_rendered
-                let htmlString         = "<html><head><style>img{height:auto;width:100%}</style></head><body >"+contenString+"</body></html"
+                let htmlString         = "<html><head><style>img {max-width: 100%; height: auto;}</style></head><body >"+contenString+"</body></html"
+                
                 reply.content_rendered = htmlString
 
                 let cellHeight:CGFloat = reply.content.sizeCalculationWithWidthAndHeightAndFont(Screen_W - 74, height: 10000, font: UIFont.systemFontOfSize(14)).height + 45;
+                self.contenCellHeight = cellHeight
                 self.feedReplyCellHeight.addObject(cellHeight)
                 
                 
@@ -113,7 +116,8 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
             
             let mainQueue = dispatch_get_main_queue()
             dispatch_async(mainQueue, {
-                self.feedTableView.reloadSections(NSIndexSet.init(index: 1), withRowAnimation: UITableViewRowAnimation.None)
+//                self.feedTableView.reloadSections(NSIndexSet.init(index: 1), withRowAnimation: UITableViewRowAnimation.None)
+                self.feedTableView.reloadData()
             })
             
 
@@ -143,18 +147,7 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
         
         if indexPath.section == 0 {
             let cell                    = tableView.dequeueReusableCellWithIdentifier("feedContent") as! FeedContentCell
-            cell.content.attributedText = self.contentModel.content_rendered.utf8Data?.attributedString
-            
-
-//            cell.content.text = self.contentModel.content
-//              cell.content.loadHTMLString(self.contentModel.content_rendered, baseURL: nil)
-//            cell.content.delegate = self
-//            cell.content.lee_text(self.contentModel.content)
-//            cell.backgroundColor = UIColor.clearColor()
-            print("contentSize:\(cell.content.contentSize)  =  \(cell.content.bounds.height)")
-//            let size = cell.content.sizeThatFits(CGSizeMake(Screen_W, 100000))
-//            cell.content.bounds = CGRectMake(0, 0, cell.content.bounds.width, size.height)
-//            print("cellheight\(cell.bounds.height) ===  cellcontentviewheoght\(cell.contentView.bounds.height)")
+            cell.content.attributedText =  self.contentModel.content_rendered.utf8Data?.attributedString
             
             return cell;
         }
@@ -208,7 +201,7 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
             let reply = UILabel()
             reply.frame = CGRectMake(0, 0, Screen_W, 44)
             if self.feedReplyModelArray.count == 0 {
-                reply.text = "  暂时没有回复"
+                reply.text = "  "
             }
             else {
                 reply.text = "  回复"

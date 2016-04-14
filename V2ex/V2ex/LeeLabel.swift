@@ -13,7 +13,7 @@ class LeeLabel: NSString {
     class func transformString(originalStr:String)->NSString {
         
         let text:NSString = originalStr;
-        let attText = (text as String).utf8Data?.attributedString
+        _ = (text as String).utf8Data?.attributedString
         //解析http https
         let regexHTTP = "http(s)?://([a-zA-Z|\\d]+\\.)+[a-zA-Z|\\d]+(/[a-zA-Z|\\d|\\-|\\+|_./?%&=]*)?"
         

@@ -15,11 +15,9 @@ class FeedReplyCell: UITableViewCell,UITextViewDelegate {
         // Initialization code
     }
 
-    let avatar = UIButton()
+    let avatar      = UIButton()
     let nameAndTime = UILabel()
-//    let name = UILabel()
-//    let time = UILabel()
-    let conten = LeeAttTextView()
+    let conten      = LeeAttTextView()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -62,12 +60,9 @@ class FeedReplyCell: UITableViewCell,UITextViewDelegate {
         
         self.contentView.addSubview(self.conten)
         conten.font = UIFont.systemFontOfSize(17)
-//        conten.lineBreakMode = NSLineBreakMode.ByTruncatingTail
-//        conten.numberOfLines = 0
-//        conten.userInteractionEnabled = false
-//        self.conten.backgroundColor = UIColor.grayColor()
         conten.scrollEnabled = false
         conten.editable = false
+         conten.selectable = true
         conten.textContainer.lineFragmentPadding = 0
         conten.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0)
         conten.delegate = self
@@ -86,8 +81,21 @@ class FeedReplyCell: UITableViewCell,UITextViewDelegate {
     func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool{
         
 //        验证是邮箱 电话 还是URL
+         NSLog("链接地址:\(URL.description)")
         
-        return true
+//        if URL.description.containsString("http"){
+//            
+//            return true
+//        }
+//        else {
+            let alert = UIAlertView.init(title: URL.description, message: "", delegate: nil, cancelButtonTitle: "OK")
+            alert.show()
+//            return false
+         return false
+//        }
+        
+        
+        
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

@@ -42,7 +42,7 @@ class FeedDetatilHeaderView: UITableViewHeaderFooterView {
         avatar.layer.cornerRadius = 20
         avatar.clipsToBounds = true
         avatar.setImage(UIImage(named:""), forState: UIControlState.Normal)
-        avatar.backgroundColor = UIColor.redColor()
+//        avatar.backgroundColor = UIColor.redColor()
         
         
     }

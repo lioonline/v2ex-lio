@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedContentCell: UITableViewCell {
+class FeedContentCell: UITableViewCell,UITextViewDelegate {
 
     /*
     // Only override drawRect: if you perform custom drawing.
@@ -37,26 +37,24 @@ class FeedContentCell: UITableViewCell {
      
         
         self.contentView.addSubview(content)
+//        content.backgroundColor = UIColor.redColor()
         content.font = UIFont.systemFontOfSize(17)
         content.snp_makeConstraints { (make) in
             make.top.bottom.left.right.equalTo(0)
         }
-        
-        
-        
-        
-        
-//        content.lineBreakMode = NSLineBreakMode.ByTruncatingTail
-////        content.numberOfLines = 0
-        content.userInteractionEnabled  = false
-//        content.font = UIFont.systemFontOfSize(14)
-//
-//        content.snp_makeConstraints { (make) in
-//            make.left.equalTo(self.contentView.snp_left).offset(10)
-//            make.right.equalTo(self.contentView.snp_right).offset(-10)
-//            make.top.equalTo(self.contentView.snp_top).offset(10)
-//            make.bottom.equalTo(self.contentView.snp_bottom).offset(-10)
-//        }
+        content.userInteractionEnabled = false
+//        content.editable = false
+        content.selectable = true
+//        content.delegate = self
+//        
+
     }
+    
+    
+    func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
+        NSLog("链接地址:\(URL.description)")
+        return true
+    }
+    
 
 }

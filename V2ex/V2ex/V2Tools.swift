@@ -60,10 +60,14 @@ extension String {
         return boundingBox
     }
     
+    
+  
+    
     var utf8Data: NSData? {
         return dataUsingEncoding(NSUTF8StringEncoding)
     }
-    
+    var count: Int { return self.characters.count }
+
     
 }
 extension NSData {
@@ -78,7 +82,9 @@ extension NSData {
 }
 
 
-extension String {
-    var count: Int { return self.characters.count }
-}
+
+
+
+
+
 
