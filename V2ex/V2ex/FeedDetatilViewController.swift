@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import TTReflect
+import Kingfisher
 
 
 class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIWebViewDelegate {
@@ -80,13 +81,11 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
                 let contenString       = reply.content_rendered
                 let htmlString         = "<html><head><style>img {max-width: 100%; height: auto;}</style></head><body >"+contenString+"</body></html"
                 reply.content_rendered = htmlString
-                self.feedReplyModelArray.addObject(reply)
-                
-                let cellHeight:CGFloat = reply.content.sizeCalculationWithWidthAndHeightAndFont(Screen_W - 74, height: 10000, font: UIFont.systemFontOfSize(14)).height + 45;
+                reply.contentAttString = V2AttributedStringHelper.transformString(reply.content)
+                                self.feedReplyModelArray.addObject(reply)
+                let cellHeight:CGFloat = reply.content.sizeCalculationWithWidthAndHeightAndFont(Screen_W - 74, height: 10000, font: UIFont.systemFontOfSize(14)).height + 50;
                 self.feedReplyCellHeight.addObject(cellHeight)
-
             }
-            
             let mainQueue = dispatch_get_main_queue()
             dispatch_async(mainQueue, {
                 self.feedTableView.reloadData()
@@ -133,8 +132,8 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
             let replyModel:FeedReplyModel = self.feedReplyModelArray[indexPath.row] as! FeedReplyModel
             let urlString                = V2_BASE + replyModel.member.avatar_normal
             cell.avatar.kf_setImageWithURL(NSURL(string:urlString)!, forState: UIControlState.Normal)
-            cell.conten.lee_text(replyModel.content)
-
+//            直接赋值
+            cell.conten.attributedText   = replyModel.contentAttString
             cell.nameAndTime.text        = replyModel.member.username
             cell.conten.sizeToFit()
             

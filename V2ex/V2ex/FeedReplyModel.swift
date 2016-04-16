@@ -19,6 +19,9 @@ class FeedReplyModel: NSObject {
     var   thanks                = 0
     var  member                 = MemberModel()
     
+    
+    var   contentAttString:NSAttributedString = NSAttributedString()
+
     func setupReplaceObjectClass() -> [String : String] {
         return ["member": "MemberModel"]
     }

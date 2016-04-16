@@ -8,6 +8,9 @@
 
 import UIKit
 
+let Screen_W:CGFloat  =  UIScreen.mainScreen().bounds.size.width
+let Screen_H:CGFloat  =  UIScreen.mainScreen().bounds.size.height
+
 class V2Tools: NSObject {
 
    

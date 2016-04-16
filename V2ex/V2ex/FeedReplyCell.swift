@@ -17,7 +17,7 @@ class FeedReplyCell: UITableViewCell,UITextViewDelegate {
 
     let avatar      = UIButton()
     let nameAndTime = UILabel()
-    let conten      = LeeAttTextView()
+    let conten      = UITextView()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

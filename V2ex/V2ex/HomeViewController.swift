@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import TTReflect
+
 
 
 
@@ -122,15 +124,26 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     //    请求最新数据
     func getNewFeed() ->Void{
         
-        Alamofire.request(.GET, V2_HOT, parameters:nil)
-            .responseJSON { (request, response, result) -> Void in
-                self.json = JSON(result.value!)
-                print(self.json)
+          NetworkEngine.getDataFromServerWithURLStringAndParameter(V2_HOT) { (res) in
+            
+            for dic in res {
                 
-                
-                self.homeTableView.reloadData()
+                let hotFeedModel =  Reflect.model(json: dic, type: HotFeedModel.self)
+                print("model.title ====>:\(hotFeedModel.title)")
+            }
+            
+            
         }
         
+//        Alamofire.request(.GET, V2_HOT, parameters:nil)
+//            .responseJSON { (request, response, result) -> Void in
+//                self.json = JSON(result.value!)
+//                print(self.json)
+//                
+//                
+//                self.homeTableView.reloadData()
+//        }
+//        
     }
     
 

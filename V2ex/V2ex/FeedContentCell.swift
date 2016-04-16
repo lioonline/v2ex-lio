@@ -17,7 +17,7 @@ class FeedContentCell: UITableViewCell,UITextViewDelegate {
         // Drawing code
     }
     */
-    let content  = LeeAttTextView()
+    let content  = UITextView()
   
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

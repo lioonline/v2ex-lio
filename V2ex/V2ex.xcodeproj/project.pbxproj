@@ -9,18 +9,16 @@
 /* Begin PBXBuildFile section */
 		959B26F1AF58D93A0AD896EF /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DEEE67F13969205FB21B80B /* Pods.framework */; };
 		9B085BC21CBB993A00FC39E7 /* DAExpandAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B085BC11CBB993A00FC39E7 /* DAExpandAnimation.swift */; };
-		9B085BC41CBBA6C600FC39E7 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B085BC31CBBA6C600FC39E7 /* HomeTableViewController.swift */; };
 		9B085BD01CBBDE5E00FC39E7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B085BCF1CBBDE5E00FC39E7 /* HomeViewController.swift */; };
 		9B085BD51CBBF10500FC39E7 /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B085BD41CBBF10500FC39E7 /* MemberModel.swift */; };
 		9B085BD71CBBF11700FC39E7 /* NodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B085BD61CBBF11700FC39E7 /* NodeModel.swift */; };
 		9B085BDB1CBCB39700FC39E7 /* FeedDetatilHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B085BDA1CBCB39700FC39E7 /* FeedDetatilHeaderView.swift */; };
-		9B3611451CBF5265002F08E6 /* LeeAttLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3611441CBF5265002F08E6 /* LeeAttLabel.swift */; };
-		9B3611491CBF5D20002F08E6 /* LeeAttTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3611481CBF5D20002F08E6 /* LeeAttTextView.swift */; };
+		9B39A51B1CC0E963002B0B9A /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B39A51A1CC0E963002B0B9A /* ContentViewController.swift */; };
+		9B58FC7A1CC215480062C5F6 /* HotFeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B58FC791CC215480062C5F6 /* HotFeedModel.swift */; };
 		9B97D0DD1CBCD43600D8ACC1 /* FeedContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97D0DC1CBCD43600D8ACC1 /* FeedContentCell.swift */; };
 		9B97D0DF1CBCE61400D8ACC1 /* FeedReplyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97D0DE1CBCE61400D8ACC1 /* FeedReplyCell.swift */; };
-		9B97D0E11CBCEB6900D8ACC1 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97D0E01CBCEB6900D8ACC1 /* ContentViewController.swift */; };
 		9B9BB0FB1CBE8DB9004FAB3A /* FeedContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9BB0FA1CBE8DB9004FAB3A /* FeedContentModel.swift */; };
-		9B9BB0FD1CBEA394004FAB3A /* LeeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9BB0FC1CBEA394004FAB3A /* LeeLabel.swift */; };
+		9BA1EAC81CC0DBDE004F37DA /* V2AttributedStringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA1EAC71CC0DBDE004F37DA /* V2AttributedStringHelper.swift */; };
 		9BB029331CBE86B900858F69 /* V2FPSLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB029321CBE86B900858F69 /* V2FPSLabel.swift */; };
 		9BC5CC3F1CBE355300802B03 /* NetworkEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC5CC3E1CBE355300802B03 /* NetworkEngine.swift */; };
 		9BD5B9F51CBE72D600316524 /* FeedReplyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD5B9F41CBE72D600316524 /* FeedReplyModel.swift */; };
@@ -29,7 +27,6 @@
 		FB29BACA1BBA2EEF00FD0015 /* APIURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29BAC91BBA2EEF00FD0015 /* APIURL.swift */; };
 		FB34861C1BDE2C9300257157 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB34861B1BDE2C9300257157 /* Images.xcassets */; };
 		FB86CA1F1BB92B8F00AD501A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB86CA1E1BB92B8F00AD501A /* AppDelegate.swift */; };
-		FB86CA211BB92B8F00AD501A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB86CA201BB92B8F00AD501A /* ViewController.swift */; };
 		FB86CA241BB92B8F00AD501A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB86CA221BB92B8F00AD501A /* Main.storyboard */; };
 		FB86CA291BB92B8F00AD501A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB86CA271BB92B8F00AD501A /* LaunchScreen.storyboard */; };
 		FB86CA341BB92B8F00AD501A /* V2exTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB86CA331BB92B8F00AD501A /* V2exTests.swift */; };
@@ -58,18 +55,17 @@
 		1DEEE67F13969205FB21B80B /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		876D7677F01FA822FBC0BAC6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9B085BC11CBB993A00FC39E7 /* DAExpandAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAExpandAnimation.swift; sourceTree = "<group>"; };
-		9B085BC31CBBA6C600FC39E7 /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		9B085BCF1CBBDE5E00FC39E7 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9B085BD41CBBF10500FC39E7 /* MemberModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
 		9B085BD61CBBF11700FC39E7 /* NodeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeModel.swift; sourceTree = "<group>"; };
 		9B085BDA1CBCB39700FC39E7 /* FeedDetatilHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedDetatilHeaderView.swift; sourceTree = "<group>"; };
-		9B3611441CBF5265002F08E6 /* LeeAttLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeeAttLabel.swift; sourceTree = "<group>"; };
-		9B3611481CBF5D20002F08E6 /* LeeAttTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeeAttTextView.swift; sourceTree = "<group>"; };
+		9B39A51A1CC0E963002B0B9A /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		9B58FC791CC215480062C5F6 /* HotFeedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotFeedModel.swift; sourceTree = "<group>"; };
+		9B58FC7B1CC21B070062C5F6 /* V2ex-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "V2ex-Bridging-Header.h"; sourceTree = "<group>"; };
 		9B97D0DC1CBCD43600D8ACC1 /* FeedContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedContentCell.swift; sourceTree = "<group>"; };
 		9B97D0DE1CBCE61400D8ACC1 /* FeedReplyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedReplyCell.swift; sourceTree = "<group>"; };
-		9B97D0E01CBCEB6900D8ACC1 /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		9B9BB0FA1CBE8DB9004FAB3A /* FeedContentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedContentModel.swift; sourceTree = "<group>"; };
-		9B9BB0FC1CBEA394004FAB3A /* LeeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeeLabel.swift; sourceTree = "<group>"; };
+		9BA1EAC71CC0DBDE004F37DA /* V2AttributedStringHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2AttributedStringHelper.swift; sourceTree = "<group>"; };
 		9BB029321CBE86B900858F69 /* V2FPSLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2FPSLabel.swift; sourceTree = "<group>"; };
 		9BC5CC3E1CBE355300802B03 /* NetworkEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkEngine.swift; sourceTree = "<group>"; };
 		9BD5B9F41CBE72D600316524 /* FeedReplyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedReplyModel.swift; sourceTree = "<group>"; };
@@ -80,7 +76,6 @@
 		FB34861B1BDE2C9300257157 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FB86CA1B1BB92B8F00AD501A /* V2ex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = V2ex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB86CA1E1BB92B8F00AD501A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FB86CA201BB92B8F00AD501A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FB86CA231BB92B8F00AD501A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FB86CA281BB92B8F00AD501A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB86CA2A1BB92B8F00AD501A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -143,6 +138,7 @@
 				9BD5B9F41CBE72D600316524 /* FeedReplyModel.swift */,
 				9B085BD61CBBF11700FC39E7 /* NodeModel.swift */,
 				9B9BB0FA1CBE8DB9004FAB3A /* FeedContentModel.swift */,
+				9B58FC791CC215480062C5F6 /* HotFeedModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -187,6 +183,7 @@
 				FB86CA4D1BB937A100AD501A /* Controllers */,
 				FB86CA4C1BB9379500AD501A /* AppDelegate */,
 				FB86CA221BB92B8F00AD501A /* Main.storyboard */,
+				9B58FC7B1CC21B070062C5F6 /* V2ex-Bridging-Header.h */,
 				9BB029321CBE86B900858F69 /* V2FPSLabel.swift */,
 				FB86CA271BB92B8F00AD501A /* LaunchScreen.storyboard */,
 				FB86CA2A1BB92B8F00AD501A /* Info.plist */,
@@ -224,11 +221,9 @@
 		FB86CA4D1BB937A100AD501A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FB86CA201BB92B8F00AD501A /* ViewController.swift */,
+				9B39A51A1CC0E963002B0B9A /* ContentViewController.swift */,
 				FBF6BAB21BBAD8BE00EDB066 /* FeedDetatilViewController.swift */,
-				9B085BC31CBBA6C600FC39E7 /* HomeTableViewController.swift */,
 				9B085BCF1CBBDE5E00FC39E7 /* HomeViewController.swift */,
-				9B97D0E01CBCEB6900D8ACC1 /* ContentViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -250,9 +245,7 @@
 				FB29BAC91BBA2EEF00FD0015 /* APIURL.swift */,
 				FB0866581BBA8F2700D9D90D /* V2Tools.swift */,
 				9BC5CC3E1CBE355300802B03 /* NetworkEngine.swift */,
-				9B9BB0FC1CBEA394004FAB3A /* LeeLabel.swift */,
-				9B3611441CBF5265002F08E6 /* LeeAttLabel.swift */,
-				9B3611481CBF5D20002F08E6 /* LeeAttTextView.swift */,
+				9BA1EAC71CC0DBDE004F37DA /* V2AttributedStringHelper.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -322,6 +315,7 @@
 		FB86CA131BB92B8F00AD501A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = lio;
 				TargetAttributes = {
@@ -439,16 +433,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B97D0E11CBCEB6900D8ACC1 /* ContentViewController.swift in Sources */,
-				FB86CA211BB92B8F00AD501A /* ViewController.swift in Sources */,
+				9BA1EAC81CC0DBDE004F37DA /* V2AttributedStringHelper.swift in Sources */,
 				9BB029331CBE86B900858F69 /* V2FPSLabel.swift in Sources */,
-				9B085BC41CBBA6C600FC39E7 /* HomeTableViewController.swift in Sources */,
 				9BD5B9F51CBE72D600316524 /* FeedReplyModel.swift in Sources */,
 				9B97D0DF1CBCE61400D8ACC1 /* FeedReplyCell.swift in Sources */,
+				9B39A51B1CC0E963002B0B9A /* ContentViewController.swift in Sources */,
 				FB29BACA1BBA2EEF00FD0015 /* APIURL.swift in Sources */,
-				9B9BB0FD1CBEA394004FAB3A /* LeeLabel.swift in Sources */,
 				9B97D0DD1CBCD43600D8ACC1 /* FeedContentCell.swift in Sources */,
 				9BC5CC3F1CBE355300802B03 /* NetworkEngine.swift in Sources */,
+				9B58FC7A1CC215480062C5F6 /* HotFeedModel.swift in Sources */,
 				FBF6BAB31BBAD8BE00EDB066 /* FeedDetatilViewController.swift in Sources */,
 				FB0866571BBA764200D9D90D /* NewFeedCell.swift in Sources */,
 				9B9BB0FB1CBE8DB9004FAB3A /* FeedContentModel.swift in Sources */,
@@ -456,10 +449,8 @@
 				9B085BDB1CBCB39700FC39E7 /* FeedDetatilHeaderView.swift in Sources */,
 				9B085BD01CBBDE5E00FC39E7 /* HomeViewController.swift in Sources */,
 				FB0866591BBA8F2700D9D90D /* V2Tools.swift in Sources */,
-				9B3611451CBF5265002F08E6 /* LeeAttLabel.swift in Sources */,
 				9B085BC21CBB993A00FC39E7 /* DAExpandAnimation.swift in Sources */,
 				FB86CA1F1BB92B8F00AD501A /* AppDelegate.swift in Sources */,
-				9B3611491CBF5D20002F08E6 /* LeeAttTextView.swift in Sources */,
 				9B085BD51CBBF10500FC39E7 /* MemberModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -604,6 +595,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = V2ex/Info.plist;
@@ -612,6 +604,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.leediscover.v2ex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "V2ex/V2ex-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -621,6 +615,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = V2ex/Info.plist;
@@ -629,6 +624,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.leediscover.v2ex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "V2ex/V2ex-Bridging-Header.h";
 			};
 			name = Release;
 		};
