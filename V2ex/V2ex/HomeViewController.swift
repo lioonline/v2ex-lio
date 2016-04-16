@@ -13,13 +13,11 @@ import TTReflect
 
 
 
-
 class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     private   let moreButton  = UIButton()
-    private     var json:JSON = nil
     private  var homeTableView = UITableView()
-
+    private var  hotModelArray:NSMutableArray = []
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getNewFeed()
@@ -52,19 +50,19 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return json.count
+        return self.hotModelArray.count
     }
     
     
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:NewFeedCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! NewFeedCell
         cell.selectionStyle = UITableViewCellSelectionStyle.None
-        let urlString = V2_BASE + json[indexPath.row]["member"]["avatar_normal"].string!
-        cell.vAvatar.kf_setImageWithURL(NSURL(string:urlString)!)
-        cell.vName.text = json[indexPath.row]["member"]["username"].string
-        cell.vTitle.text = json[indexPath.row]["title"].string
-        cell.vContent.text = json[indexPath.row]["content"].string!
-        let timestring = json[indexPath.row]["created"].intValue
+        let hotModel:HotFeedModel = self.hotModelArray[indexPath.row] as! HotFeedModel
+        cell.vAvatar.kf_setImageWithURL(NSURL.init(string:V2_BASE + hotModel.member.avatar_normal)!)
+        cell.vName.text = hotModel.member.username
+        cell.vTitle.text = hotModel.title
+        cell.vContent.text = hotModel.content
+        let timestring = hotModel.created
         let t = timeStampToString("\(timestring)")
         cell.vTime.text  = t
         
@@ -78,7 +76,8 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
      func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let feedDetatil = FeedDetatilViewController()
         self.moreButtonDismissAnimation()
-        feedDetatil.contentID = json[indexPath.row]["id"].intValue
+        let model:HotFeedModel = self.hotModelArray[indexPath.row] as! HotFeedModel
+        feedDetatil.contentID =  model.id
         self.navigationController?.pushViewController(feedDetatil, animated: true)
     }
     
@@ -128,22 +127,16 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             
             for dic in res {
                 
-                let hotFeedModel =  Reflect.model(json: dic, type: HotFeedModel.self)
-                print("model.title ====>:\(hotFeedModel.title)")
+                let hotFeedModel = HotFeedModel.yy_modelWithJSON(dic)
+                print("username==>\(hotFeedModel?.member.username)")
+                self.hotModelArray.addObject(hotFeedModel!)
+                
             }
             
-            
+            self.homeTableView.reloadData()
         }
         
-//        Alamofire.request(.GET, V2_HOT, parameters:nil)
-//            .responseJSON { (request, response, result) -> Void in
-//                self.json = JSON(result.value!)
-//                print(self.json)
-//                
-//                
-//                self.homeTableView.reloadData()
-//        }
-//        
+
     }
     
 

@@ -55,7 +55,7 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
           let paramerters = ["id":content]
          NetworkEngine.getDataFromServerWithURLStringAndParameter(V2_CONTENT,parameter: paramerters) { (restult) in
 
-            self.contentModel     = Reflect.model(json: restult[0], type: FeedContentModel.self)
+            self.contentModel     = FeedContentModel.yy_modelWithJSON(restult[0])!//Reflect.model(json: restult[0], type: FeedContentModel.self)
             self.htmlString       = "<html><head><style>img{height:auto;width:100%}</style></head><body >"+self.contentModel.content_rendered+"</body></html"
             self.contenCellHeight = self.htmlString.sizeCalculationWithWidthAndHeightAndFont(Screen_W - 20, height: 10000, font: UIFont.systemFontOfSize(14)).height + 20
             
@@ -77,7 +77,7 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
             
             for dic in res {
             
-                let reply              = Reflect.model(json: dic, type: FeedReplyModel.self)
+                let reply              = FeedReplyModel.yy_modelWithJSON(dic)!//Reflect.model(json: dic, type: FeedReplyModel.self)
                 let contenString       = reply.content_rendered
                 let htmlString         = "<html><head><style>img {max-width: 100%; height: auto;}</style></head><body >"+contenString+"</body></html"
                 reply.content_rendered = htmlString
