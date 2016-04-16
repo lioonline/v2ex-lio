@@ -86,18 +86,14 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/Alamofire.framework"
   install_framework "Pods/Kingfisher.framework"
-  install_framework "Pods/SlideMenuControllerSwift.framework"
   install_framework "Pods/SnapKit.framework"
   install_framework "Pods/SwiftyJSON.framework"
-  install_framework "Pods/TTReflect.framework"
   install_framework "Pods/YYModel.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/Alamofire.framework"
   install_framework "Pods/Kingfisher.framework"
-  install_framework "Pods/SlideMenuControllerSwift.framework"
   install_framework "Pods/SnapKit.framework"
   install_framework "Pods/SwiftyJSON.framework"
-  install_framework "Pods/TTReflect.framework"
   install_framework "Pods/YYModel.framework"
 fi
