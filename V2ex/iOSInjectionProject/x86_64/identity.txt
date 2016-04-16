@@ -1,2 +1,0 @@
-/Users/cocoalee/Library/Developer/Xcode/DerivedData/V2ex-fdixkyltfrfpxneuuzaaxdwsjgry/Build/Products/Debug-iphonesimulator/V2ex.app
-iPhone Developer
