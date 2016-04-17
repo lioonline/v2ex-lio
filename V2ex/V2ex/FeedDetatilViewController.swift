@@ -52,9 +52,9 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
     }
         //    get date
        func getDateWithContetID(content:NSInteger)->() {
-          let paramerters = ["id":content]
-         NetworkEngine.getDataFromServerWithURLStringAndParameter(V2_CONTENT,parameter: paramerters) { (restult) in
-
+        let paramerters = ["id":content]
+        
+        NetworkEngine.getDataFromServerWithURLStringAndParameter(V2_CONTENT,parameter: paramerters, complete: { (restult) in
             self.contentModel     = FeedContentModel.yy_modelWithJSON(restult[0])!//Reflect.model(json: restult[0], type: FeedContentModel.self)
             self.htmlString       = "<html><head><style>img{height:auto;width:100%}</style></head><body >"+self.contentModel.content_rendered+"</body></html"
             self.contenCellHeight = self.htmlString.sizeCalculationWithWidthAndHeightAndFont(Screen_W - 20, height: 10000, font: UIFont.systemFontOfSize(14)).height + 20
@@ -62,27 +62,32 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
             
             self.contentModel.content_rendered = self.htmlString
             let mainQueue = dispatch_get_main_queue()
-          dispatch_async(mainQueue, { 
-                        self.feedTableView.reloadData()
-          })
+            dispatch_async(mainQueue, {
+                self.feedTableView.reloadData()
+            })
+            
+            }) { (error) in
+                print("error:\(error)")
         }
+        
     }
     
     
     //    get reply
     func getReplyWithId(contentID:NSInteger){
          let par = ["topic_id":contentID]
-        NetworkEngine.getDataFromServerWithURLStringAndParameter(VC_CONTENT_REPLY,parameter: par) { (res) in
-            
+        
+        
+        NetworkEngine.getDataFromServerWithURLStringAndParameter(VC_CONTENT_REPLY,parameter: par, complete: { (res) in
             
             for dic in res {
-            
+                
                 let reply              = FeedReplyModel.yy_modelWithJSON(dic)!//Reflect.model(json: dic, type: FeedReplyModel.self)
                 let contenString       = reply.content_rendered
                 let htmlString         = "<html><head><style>img {max-width: 100%; height: auto;}</style></head><body >"+contenString+"</body></html"
                 reply.content_rendered = htmlString
                 reply.contentAttString = V2AttributedStringHelper.transformString(reply.content)
-                                self.feedReplyModelArray.addObject(reply)
+                self.feedReplyModelArray.addObject(reply)
                 let cellHeight:CGFloat = reply.content.sizeCalculationWithWidthAndHeightAndFont(Screen_W - 74, height: 10000, font: UIFont.systemFontOfSize(14)).height + 50;
                 self.feedReplyCellHeight.addObject(cellHeight)
             }
@@ -91,11 +96,13 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
                 self.feedTableView.reloadData()
             })
             
-
+            
+            }) { (error) in
+                print("error\(error)")
         }
+   }
         
         
-    }
     
     
     

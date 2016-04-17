@@ -22,6 +22,7 @@
 		9BB029331CBE86B900858F69 /* V2FPSLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB029321CBE86B900858F69 /* V2FPSLabel.swift */; };
 		9BB39AFD1CC37EB70064C1BD /* UserInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB39AFC1CC37EB70064C1BD /* UserInformationViewController.swift */; };
 		9BB39AFF1CC383390064C1BD /* NodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB39AFE1CC383390064C1BD /* NodeViewController.swift */; };
+		9BB39B011CC388630064C1BD /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB39B001CC388630064C1BD /* BaseModel.swift */; };
 		9BC5CC3F1CBE355300802B03 /* NetworkEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC5CC3E1CBE355300802B03 /* NetworkEngine.swift */; };
 		9BD5B9F51CBE72D600316524 /* FeedReplyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD5B9F41CBE72D600316524 /* FeedReplyModel.swift */; };
 		FB0866571BBA764200D9D90D /* NewFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0866561BBA764200D9D90D /* NewFeedCell.swift */; };
@@ -71,6 +72,7 @@
 		9BB029321CBE86B900858F69 /* V2FPSLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2FPSLabel.swift; sourceTree = "<group>"; };
 		9BB39AFC1CC37EB70064C1BD /* UserInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInformationViewController.swift; sourceTree = "<group>"; };
 		9BB39AFE1CC383390064C1BD /* NodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeViewController.swift; sourceTree = "<group>"; };
+		9BB39B001CC388630064C1BD /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		9BC5CC3E1CBE355300802B03 /* NetworkEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkEngine.swift; sourceTree = "<group>"; };
 		9BD5B9F41CBE72D600316524 /* FeedReplyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedReplyModel.swift; sourceTree = "<group>"; };
 		D2992A311CCD35FBBD024D04 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				9B085BD61CBBF11700FC39E7 /* NodeModel.swift */,
 				9B9BB0FA1CBE8DB9004FAB3A /* FeedContentModel.swift */,
 				9B58FC791CC215480062C5F6 /* HotFeedModel.swift */,
+				9BB39B001CC388630064C1BD /* BaseModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 			files = (
 				9BA1EAC81CC0DBDE004F37DA /* V2AttributedStringHelper.swift in Sources */,
 				9BB029331CBE86B900858F69 /* V2FPSLabel.swift in Sources */,
+				9BB39B011CC388630064C1BD /* BaseModel.swift in Sources */,
 				9BD5B9F51CBE72D600316524 /* FeedReplyModel.swift in Sources */,
 				9B97D0DF1CBCE61400D8ACC1 /* FeedReplyCell.swift in Sources */,
 				9B39A51B1CC0E963002B0B9A /* ContentViewController.swift in Sources */,

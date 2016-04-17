@@ -16,7 +16,8 @@ class NetworkEngine: NSObject {
     class func getDataFromServerWithURLStringAndParameter(
         url:String,
         parameter:[String: AnyObject]? = nil,
-        complete:NSArray->()
+        complete:NSArray->(),
+        errorMsg:ErrorType->()
         )->(){
       
         
@@ -31,6 +32,7 @@ class NetworkEngine: NSObject {
                     
                 case .Failure(let data, let error):
                     print("Request failed with error: \(error)")
+                    errorMsg(error)
                     
                     if let data = data {
                         print("Response data: \(NSString(data: data, encoding: NSUTF8StringEncoding)!)")

@@ -125,8 +125,8 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     //    请求最新数据
     func getNewFeed() ->Void{
         
-          NetworkEngine.getDataFromServerWithURLStringAndParameter(V2_HOT) { (res) in
-            
+        
+        NetworkEngine.getDataFromServerWithURLStringAndParameter(V2_HOT, parameter: nil,complete: { (res) in
             for dic in res {
                 
                 let hotFeedModel = HotFeedModel.yy_modelWithJSON(dic)
@@ -134,10 +134,11 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 self.hotModelArray.addObject(hotFeedModel!)
                 
             }
-            
             self.homeTableView.reloadData()
+            
+            }) { (error) in
+                print("error\(error)")
         }
-        
 
     }
     
