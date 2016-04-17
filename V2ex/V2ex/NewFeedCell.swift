@@ -12,7 +12,7 @@ import SnapKit
 
 class NewFeedCell: UITableViewCell {
 
-    var vAvatar:UIImageView = UIImageView()
+    var vAvatar:UIButton = UIButton()
     var vName:UILabel  = UILabel()
     var vTime:UILabel  = UILabel()
     var vTitle:UILabel = UILabel()

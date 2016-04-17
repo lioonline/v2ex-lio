@@ -132,6 +132,8 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
             let replyModel:FeedReplyModel = self.feedReplyModelArray[indexPath.row] as! FeedReplyModel
             let urlString                = V2_BASE + replyModel.member.avatar_normal
             cell.avatar.kf_setImageWithURL(NSURL(string:urlString)!, forState: UIControlState.Normal)
+            cell.avatar.tag = indexPath.row
+            cell.avatar.addTarget(self, action: #selector(FeedDetatilViewController.pushToUserInformationViewControlerWith(_:)), forControlEvents: UIControlEvents.TouchUpInside)
 //            直接赋值
             cell.conten.attributedText   = replyModel.contentAttString
             cell.nameAndTime.text        = replyModel.member.username
@@ -221,6 +223,19 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     
+    func pushToUserInformationViewControlerWith(btn:UIButton)->(){
+        
+        let model:FeedReplyModel = self.feedReplyModelArray[btn.tag] as! FeedReplyModel
+        
+        let username = model.member.username
+        
+        let userInfo = UserInformationViewController()
+        userInfo.userName = username
+        self.navigationController?.pushViewController(userInfo, animated: true)
+        
+        print("tag \(btn.tag)")
+        
+    }
 
     /*
     // MARK: - Navigation

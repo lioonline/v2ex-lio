@@ -38,7 +38,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         moreButton.layer.cornerRadius = 30;
         moreButton.clipsToBounds = true
         moreButton.frame = CGRectMake(30, Screen_H - 90 , 60, 60)
-        
+        moreButton.addTarget(self, action: #selector(HomeViewController.pushToNodeViewControler), forControlEvents: UIControlEvents.TouchUpInside)
         self.title = "V2EX 最热"
         
 
@@ -58,7 +58,9 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let cell:NewFeedCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! NewFeedCell
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         let hotModel:HotFeedModel = self.hotModelArray[indexPath.row] as! HotFeedModel
-        cell.vAvatar.kf_setImageWithURL(NSURL.init(string:V2_BASE + hotModel.member.avatar_normal)!)
+        cell.vAvatar.kf_setImageWithURL(NSURL.init(string:V2_BASE + hotModel.member.avatar_normal)!, forState:UIControlState.Normal )
+        cell.vAvatar.tag = indexPath.row
+        cell.vAvatar.addTarget(self, action:#selector(HomeViewController.pushToUserInformationViewControlerWith(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         cell.vName.text = hotModel.member.username
         cell.vTitle.text = hotModel.title
         cell.vContent.text = hotModel.content
@@ -139,7 +141,33 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     }
     
+    /**
+     跳转用户信息页面
+     
+     - parameter btn: btn
+     */
+    func pushToUserInformationViewControlerWith(btn:UIButton)->(){
+       
+        let model:HotFeedModel = self.hotModelArray[btn.tag] as! HotFeedModel
+    
+        let username = model.member.username
+        
+        let userInfo = UserInformationViewController()
+        userInfo.userName = username
+        self.navigationController?.pushViewController(userInfo, animated: true)
+        
+        print("tag \(btn.tag)")
 
+    }
+    
+    /**
+     跳转到节点页面
+     */
+    func pushToNodeViewControler(){
+        let node = NodeViewController()
+        self.navigationController?.pushViewController(node, animated: true)
+    }
+    
     
     
     override func didReceiveMemoryWarning() {
