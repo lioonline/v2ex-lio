@@ -15,7 +15,7 @@ class FeedDetatilHeaderView: UITableViewHeaderFooterView {
     
     
     override  init(reuseIdentifier: String?) {
-        super.init(reuseIdentifier: "feedHeader")
+        super.init(reuseIdentifier: reuseIdentifier)
         self.initView()
     }
     

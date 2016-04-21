@@ -41,4 +41,34 @@ class NetworkEngine: NSObject {
         }
             
   }
+    
+        class func getDataFromServerWithURLString(
+            url:String,
+            complete:AnyObject->(),
+            errorMsg:ErrorType->()
+            )->(){
+            
+            
+            Alamofire.request(.GET, url, parameters: nil).responseJSON { (request, response, result) in
+                
+                switch result {
+                case .Success(let JSON):
+                    let dic = JSON
+                    complete(dic)
+                    
+                case .Failure(let data, let error):
+                    print("Request failed with error: \(error)")
+                    errorMsg(error)
+                    
+                    if let data = data {
+                        print("Response data: \(NSString(data: data, encoding: NSUTF8StringEncoding)!)")
+                    }
+                }
+            }
+            
+            
+        }
+    
+    
+    
 }

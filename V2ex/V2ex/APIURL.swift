@@ -20,4 +20,6 @@ let V2_BASE :String = "http:"
 //主题信息
 let V2_CONTENT:String = "https://www.v2ex.com/api/topics/show.json"
 //主题回复
-let VC_CONTENT_REPLY:String = "https://www.v2ex.com/api/replies/show.json"
+let V2_CONTENT_REPLY:String = "https://www.v2ex.com/api/replies/show.json"
+//用户信息
+let V2_USERINFO:String  = "https://www.v2ex.com/api/members/show.json?username="

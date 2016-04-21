@@ -22,8 +22,5 @@ class FeedContentModel: NSObject {
     var title:String            = ""
     var url:String              = ""
     
-    func setupReplaceObjectClass() -> [String : String] {
-        return ["member": "MemberModel"]
-    }
 
 }

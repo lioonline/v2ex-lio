@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import  TTReflect
 
 class FeedReplyModel: NSObject {
 
@@ -22,9 +21,7 @@ class FeedReplyModel: NSObject {
     
     var   contentAttString:NSAttributedString = NSAttributedString()
 
-    func setupReplaceObjectClass() -> [String : String] {
-        return ["member": "MemberModel"]
-    }
+
     
     
 }

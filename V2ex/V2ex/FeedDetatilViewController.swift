@@ -78,7 +78,7 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
          let par = ["topic_id":contentID]
         
         
-        NetworkEngine.getDataFromServerWithURLStringAndParameter(VC_CONTENT_REPLY,parameter: par, complete: { (res) in
+        NetworkEngine.getDataFromServerWithURLStringAndParameter(V2_CONTENT_REPLY,parameter: par, complete: { (res) in
             
             for dic in res {
                 

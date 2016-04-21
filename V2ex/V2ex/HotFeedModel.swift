@@ -22,7 +22,5 @@ class HotFeedModel: NSObject {
     var last_touched = 0
     var url:String = ""
     
-//    func setupReplaceObjectClass() -> [String : String] {
-//        return ["member": "MemberModel","node":"NodeModel"]
-//    }
+
 }
