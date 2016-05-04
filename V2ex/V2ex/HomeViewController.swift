@@ -149,12 +149,14 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
      */
     func pushToUserInformationViewControlerWith(btn:UIButton)->(){
        
+        let cell:NewFeedCell = self.homeTableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: btn.tag, inSection: 0)) as! NewFeedCell;
         let model:HotFeedModel = self.hotModelArray[btn.tag] as! HotFeedModel
     
         let username = model.member.username
         
         let userInfo = UserInformationViewController()
         userInfo.userName = username
+        userInfo.headerImage = (cell.vAvatar.imageView?.image)!
         self.navigationController?.pushViewController(userInfo, animated: true)
         
         print("tag \(btn.tag)")

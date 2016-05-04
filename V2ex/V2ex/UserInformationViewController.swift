@@ -14,6 +14,7 @@ class UserInformationViewController: UIViewController ,UITableViewDelegate,UITab
     var userName:String = ""
     var tableView:UITableView = UITableView()
     var userModel = UserModel()
+    var headerImage = UIImage()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,10 +80,16 @@ class UserInformationViewController: UIViewController ,UITableViewDelegate,UITab
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterViewWithIdentifier("userInfoHeader") as! UserInfoHeaderView
-        header.bgImageView.kf_setImageWithURL(NSURL.init(string:V2_BASE + self.userModel.avatar_large)!)
-        header.avatarImageView.kf_setImageWithURL(NSURL.init(string: V2_BASE + self.userModel.avatar_normal)!)
+        header.bgImageView.kf_setImageWithURL(NSURL.init(string:V2_BASE + self.userModel.avatar_large)!,placeholderImage: self.headerImage);
+        header.avatarImageView.kf_setImageWithURL(NSURL.init(string:V2_BASE + self.userModel.avatar_large)!, placeholderImage: self.headerImage);
         header.userNameLabel.text = self.userModel.username
-        header.signatureLabel.text = self.userModel.bio
+        if self.userModel.bio.count > 0 {
+            header.signatureLabel.text = self.userModel.bio
+        }
+        else{
+            header.signatureLabel.text = "没有签名"
+
+        }
         return header
     }
 

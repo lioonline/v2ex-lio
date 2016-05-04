@@ -234,10 +234,13 @@ class FeedDetatilViewController: UIViewController,UITableViewDelegate,UITableVie
         
         let model:FeedReplyModel = self.feedReplyModelArray[btn.tag] as! FeedReplyModel
         
+        let cell:FeedReplyCell = feedTableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: btn.tag, inSection: 1)) as! FeedReplyCell;
+        
         let username = model.member.username
         
         let userInfo = UserInformationViewController()
         userInfo.userName = username
+        userInfo.headerImage = (cell.avatar.imageView?.image)!
         self.navigationController?.pushViewController(userInfo, animated: true)
         
         print("tag \(btn.tag)")
